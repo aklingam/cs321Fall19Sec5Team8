@@ -1,4 +1,4 @@
-Idea: Chess application with focus on customizability of appearance as well as games. Also can provice ease of access features. 
+Idea: Chess application with focus on customizability of appearance as well as games. Also can provide ease of access features. 
 
 Sample feature list: ( Ideally it would be nice to convert this to a tree structure so that we can visually see what all of the prerequisites are. 
 Not all of these features even can be implemented in the time we have available. It may perofrm better if we simplified this to checkers.  
