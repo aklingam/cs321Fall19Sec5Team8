@@ -1,7 +1,8 @@
 Idea: Chess application with focus on customizability of appearance as well as games. Also can provice ease of access features. 
-Sample feature list: ( Ideally it would be nice to convert this to a tree structure so that we can visually see what all of the prerequisites are. 
 
+Sample feature list: ( Ideally it would be nice to convert this to a tree structure so that we can visually see what all of the prerequisites are. 
 Not all of these features even can be implemented in the time we have available. It may perofrm better if we simplified this to checkers.  
+
 01. Create a board object
 02. Display board state
 03. Create a menu bar
@@ -27,6 +28,7 @@ Customizability features:
   3. Can save these board presets at any time to allow you to load them up. 
 
 Ease of access features: 
+  1. Voice control of the board may be a painful thing to implement or it may be a simple api call, research needs to be done.
 
 Cons: 
   1. Needs a lot of work upfront before the customizability can come into play, and development is fairly linear ( one thing has to come after the other ) before branching out so that everyone can work at the same time on the project.  
