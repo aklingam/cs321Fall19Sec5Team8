@@ -1,10 +1,8 @@
 # cs321Fall19Sec5Team8
-
-Current project ideas: \n
-  Chess game with focus on customizability or voice activation. \n
-  Ebook statistics creator \n
-\n
-\n
-This project is being implemented by: \n
-  Adam Klingaman \n
+<br/>
+Current project ideas: <br/>
+  Chess game with focus on customizability or voice activation.<br/>
+  Ebook statistics creator <br/>
+This project is being implemented by: <br/>
+  Adam Klingaman <br/>
   
