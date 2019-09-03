@@ -2,7 +2,7 @@ Idea: Chess application with focus on customizability of appearance as well as g
 
 Sample feature list: ( Ideally it would be nice to convert this to a tree structure so that we can visually see what all of the prerequisites are. 
 Not all of these features even can be implemented in the time we have available. It may perofrm better if we simplified this to checkers.  
-This list is by no means echaustive or even pareticularly in order of what can or should be done before each other.
+This list is by no means exhaustive or even particularly in order of what can or should be done before each other.
 
 01. Create a board object
 02. Display board state
