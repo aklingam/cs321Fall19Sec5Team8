@@ -1,0 +1,38 @@
+Idea: Chess application with focus on customizability of appearance as well as games. Also can provice ease of access features. 
+Sample feature list: ( Ideally it would be nice to convert this to a tree structure so that we can visually see what all of the prerequisites are. 
+
+Not all of these features even can be implemented in the time we have available. It may perofrm better if we simplified this to checkers.  
+01. Create a board object
+02. Display board state
+03. Create a menu bar
+04. Create pieces that can be overlayed onto the board
+05. Allow pieces to be moved at will ( not according to piece rules yet )
+06. Make pieces moveable only according to turns
+07. Show captured pieces on menu bar
+08. Restrict moves based on piece rules.
+09. Further restrict moves to disallow moves that would put the king in check (iterating through every pieces move list to try to capture king.
+10. Add castling.
+11. Provide the option to play 2 player or to play vs ai*
+12. add creating a game to menu.
+13. add saving of board to menu.
+13. add loading board from file to menu.
+14. add loading theme from file to menu.
+15. add undo/redo feature to the menu.
+16. add hints to menu
+
+
+Customizability features: 
+  1. Can load an image file containing pictures of the board tiles and the pices and load that onto the board at will. We can also provide a couple samples.
+  2. Can enter an edit mode at any time that allows you to place pieces, move pieces or remove pieces. 
+  3. Can save these board presets at any time to allow you to load them up. 
+
+Ease of access features: 
+
+Cons: 
+  1. Needs a lot of work upfront before the customizability can come into play, and development is fairly linear ( one thing has to come after the other ) before branching out so that everyone can work at the same time on the project.  
+  2. We also need to decide on a language and a gui. 
+     GUI ideas: Processing.org
+     
+      
+AI: The stockfish chess engine is open source and we could make calls to their api to be able to get different levels of ai moves relatively painlessly. We dont have to design any of that ourselves, which would be a much larger ordeal.
+      
