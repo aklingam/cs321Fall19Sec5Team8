@@ -33,6 +33,7 @@ Ease of access features:
 
 Cons: 
   1. Needs a lot of work upfront before the customizability can come into play, and development is fairly linear ( one thing has to come after the other ) before branching out so that everyone can work at the same time on the project.  
+	CAVEAT: pair programming can be used to alleviate con number one. 
   2. We also need to decide on a language and a gui. 
      GUI ideas: Processing.org
      
