@@ -1,11 +1,14 @@
 import java.util.*;
 public class Board {
-
-	ArrayList<Piece> whitePieces;
-	ArrayList<Piece> blackPieces;
+	
+	public Piece[8][8] boardState; //Empty is also considered a piece, so we get to hold explicit references to all 64 places.
 
 	public Board() {
-		//TODO: instantiate the arraylists and populate them in the default way		
+		for(int i = 0; i<8; i++) {
+			for(int j = 0; j<8; j++) {
+				boardState[i][j] = new Piece(PieceType.EMPTY);		
+			}
+		}	
 	}
 	public void populatePieces() {
 			//TODO: default board layout for a new game. 
@@ -17,8 +20,9 @@ public class Board {
 	//2: invalid move ( endTile piece color = startTile piece color ) 
 	//3: invalid move ( startTile Has no piece )
 	public boolean checkStrucutralMoveValidity(Move m) {
-		
+		//TODO
 	}
+
 
 
  
