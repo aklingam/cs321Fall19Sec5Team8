@@ -10,19 +10,32 @@ public class Board {
 			}
 		}	
 	}
+	public Piece getPieceFromPosition(Position p) {
+		return boardState[p.row][p.col];	
+	}
 	public void populatePieces() {
 			//TODO: default board layout for a new game. 
 	}
 
-	//Checks STRUCTURAL ( not the logical ) validity of transfering a piece from tile a to tile b. Codes as following:
-	//0: valid move ( endTile empty )
-	//1: valid move ( endTile piece color != startTile piece color ) 
-	//2: invalid move ( endTile piece color = startTile piece color ) 
-	//3: invalid move ( startTile Has no piece )
+	//Checks STRUCTURAL ( not the logical ) validity of transfering a piece from tile a to tile b. Cases as following
+	//1. null checking everything
+	//2. checking bounds of the moves position values.
 	public boolean checkStrucutralMoveValidity(Move m) {
-		//TODO
+		if(m.startPos==null||m.endPos==null) { return false; }
+		if(m.startPos.row<0||m.startPos.col>7||m.endPos<0||m.endPos>7) { return false; }
+		Piece start = getPieceFromPosition(m.startPos);
+		Piece end = getPieceFromPosition(m.endPos);
+		if(start.PieceType==EMPTY) { return false; }
+        if(start.whitePiece==end.whitePiece) { return false; } 
+
 	}
 
+	public boolean validMovePawn(Move m)   { return false; }
+	public boolean validMoveRook(Move m)   { return false; }
+	public boolean validMoveKnight(Move m) { return false; }
+	public boolean validMoveBishop(Move m) { return false; }
+	public boolean validMoveKing(Move m, boolean castled)   { return false; }
+	public boolean validMoveQueen(Move m)  { return false; }
 
 
  

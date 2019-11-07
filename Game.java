@@ -12,20 +12,32 @@ public class Game {
 		//TODO: using serializable is likely to be the best option.
 	}
 	public boolean validMove(Move m) {
-		if(m==null) {
-			return false;
-		}
-
-		if(!board.checkStructuralMoveValidity(m)) {
-			return false;
+		//SANITY CHECKS
+		if(m==null) { return false; }
+		board.checkStructuralMoveValidity(m);
+		Piece p = getPieceFromPosition(m.startPos); //obtaining our reference
+		if(whitesTurn!=p.whitePiece) { return false; }
+		//END SANITY CHECKS
+		switch(p.pieceType) {
+			case PAWN:   return board.validMovePawn(m);   break;
+			case ROOK:   return board.validMoveRook(m);   break;
+			case KNIGHT: return board.validMoveKnight(m); break;
+			case BISHOP: return board.validMoveBishop(m); break;
+			case QUEEN:  return board.validMoveQueen(m);  break;
+			case KING:   
+				if(whitesTurn) {
+					return board.validMoveKing(m,whiteCastled);	
+				} else {
+					return board.validMoveKing(m,blackCastled);   
+				}
+				break;
+			default: 
+				//Something seriously messed up here!
 		}	
-
-
-	
-		//TODO: have to check structural validity and logical validity.
-		//This also gets really complicated because we need to see whether or not this move would put the king in check.
-		//My best guess is to copy the board and make the move and check whether any of the opponents pieces would capture the king in this alternate board. 
 	}
+
+
+
 
 
 	//Function to actually make the moves
@@ -33,6 +45,8 @@ public class Game {
 	//0: normal move.
 	//1: the move was a capture
 	//2: the move was a castle
+	//3: the move was a pawn promotion
+	//... or something alone those lines, havent gotten to it yet
 	public int makeMove() {
 
 
