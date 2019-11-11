@@ -4,35 +4,33 @@ public class Game {
 	int movesPlayedWithoutCapture; //30 moves without capture is an automatic draw
 	Board board;	
 	public Game() {
-		whitesTurn = 1;
+		whitesTurn = true;
 		movesPlayedWithoutCapture = 0;
 		board = new Board();
 	}
-	public Game(File gamefile) {
-		//TODO: using serializable is likely to be the best option.
-	}
+	//public Game(File gamefile){}
 	public boolean validMove(Move m) {
 		//SANITY CHECKS
 		if(m==null) { return false; }
 		board.checkStructuralMoveValidity(m);
-		Piece p = getPieceFromPosition(m.startPos); //obtaining our reference
-		if(whitesTurn!=p.whitePiece) { return false; }
+		Piece p = board.getPieceFromPosition(m.startPos); //obtaining our reference
+		if(whitesTurn!=p.whitesPiece) { return false; }
 		//END SANITY CHECKS
-		switch(p.pieceType) {
-			case PAWN:   return board.validMovePawn(m);   break;
-			case ROOK:   return board.validMoveRook(m);   break;
-			case KNIGHT: return board.validMoveKnight(m); break;
-			case BISHOP: return board.validMoveBishop(m); break;
-			case QUEEN:  return board.validMoveQueen(m);  break;
+		switch(p.pt) {
+			case PAWN:   return board.validMovePawn(m); //breaks are unreachable and the compiler complains 
+			case ROOK:   return board.validMoveRook(m);   
+			case KNIGHT: return board.validMoveKnight(m); 
+			case BISHOP: return board.validMoveBishop(m); 
+			case QUEEN:  return board.validMoveQueen(m); 
 			case KING:   
 				if(whitesTurn) {
 					return board.validMoveKing(m,whiteCastled);	
 				} else {
 					return board.validMoveKing(m,blackCastled);   
 				}
-				break;
 			default: 
 				//Something seriously messed up here!
+				return false;
 		}	
 	}
 
@@ -49,9 +47,10 @@ public class Game {
 	//... or something alone those lines, havent gotten to it yet
 	public int makeMove() {
 
-
+		return 0;
 	}
-
+/*	//Doesnt compile until later in implementation
+	//TODO: add runtime arguments for a file to be grabbed via IO.java using serializable
 	public static void main() {
 		Game game = new Game();
 		do { 
@@ -68,7 +67,7 @@ public class Game {
 		//TODO: exit handling on win	
 	}
 
-
+*/
 
 	//returns the victor of the game, -1 = no victor yet, 0 = white, 1 = black.
 	public int victor() {
