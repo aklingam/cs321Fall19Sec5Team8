@@ -61,24 +61,39 @@ public class Board {
 	public void printBoard() {
 		for(int i = 0; i<8; i++) {
 			for(int j = 0; j<8; j++) {
-				String s = ""; //We never print the "", just need it so compiler will shut up about uninstantiated values
-				Piece p = boardState[i][j];
-				switch(p.pt) {
-					case EMPTY:  s = "-"; break;
-					case PAWN:   s = p.whitesPiece.booleanValue() ? ("P") : ("p"); break;
-					case ROOK:   s = p.whitesPiece.booleanValue() ? ("R") : ("r"); break;
-					case KNIGHT: s = p.whitesPiece.booleanValue() ? ("N") : ("n"); break; //Standard nomenclature gives king k, so knight gets n
-					case BISHOP: s = p.whitesPiece.booleanValue() ? ("B") : ("b"); break;
-					case KING:   s = p.whitesPiece.booleanValue() ? ("K") : ("k"); break;
-					case QUEEN:  s = p.whitesPiece.booleanValue() ? ("Q") : ("q"); break;	
-				}
-				System.out.print(s);
+				System.out.print(boardState[i][j].PieceLetter());
 			}
 			System.out.println();
 		}
 	}
 
-	public boolean validMovePawn(Move m)   { return true; }
+	//returns the board states information about the FEN string. used by game's FENString function to give the whole string.
+	public StringBuilder boardFENString() {
+		StringBuilder sb = new StringBuilder(); //We need to do a lot of appending, so im working with an sb off the bat.
+		int count = 0; //holds the number of empty spots in a row, so we can do things like 4p3  
+		for(int i = 8; i>-1; i--) { //FEN strings start at A8, so the literal last element in our representation
+			for(int j = 8; j>-1; j--) {
+				if(boardState[i][j].pt!=EMPTY) {
+					count++;
+				} else {
+					sb.append(count);
+					count = 0;
+					sb.append(boardState[i][j].PieceLetter());
+				}	
+			}
+			if(i!=0) { sb.append("/");	
+		}
+		return sb;	
+	}	
+
+	public boolean validMovePawn(Move m)   { 
+		int rowDiff = Math.abs(m.rowDiff());
+		int colDiff = Math.abs(m.colDiff());
+		if(colDiff>1) { return false; }
+		if(rowDiff>2) { return false; }
+		if((colDiff==1)&&(rowDiff==1)&& //make sure pawn cant go backwards
+	}
+
 	public boolean validMoveRook(Move m)   { return true; }
 	public boolean validMoveKnight(Move m) { return true; }
 	public boolean validMoveBishop(Move m) { return true; }
