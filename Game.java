@@ -25,6 +25,9 @@ public class Game {
 		movesPlayedWithoutCapture = Integer.parseInt(st.nextToken());
 		moveCount = st.nextToken();
 	}
+	public void stockfishInit() {
+
+	}
 	public boolean validMove(Move m) {
 		//SANITY CHECKS
 		if(m==null) { return false; }
@@ -32,23 +35,10 @@ public class Game {
 		Piece p = board.getPieceFromPosition(m.startPos); //obtaining our reference
 		if(whitesTurn!=p.whitesPiece) { return false; }
 		//END SANITY CHECKS
-		switch(p.pt) {
-			case PAWN:   return board.validMovePawn(m); //breaks are unreachable and the compiler complains 
-			case ROOK:   return board.validMoveRook(m);   
-			case KNIGHT: return board.validMoveKnight(m); 
-			case BISHOP: return board.validMoveBishop(m); 
-			case QUEEN:  return board.validMoveQueen(m); 
-			case KING:   
-				if(whitesTurn) {
-					return board.validMoveKing(m,whiteCastled);	
-				} else {
-					return board.validMoveKing(m,blackCastled);   
-				}
-			default: 
-				//Something seriously messed up here!
-				return false;
-		}	
+		return true;
 	}
+
+
 
 	//returns an FEN string of the game state for use with the stockfish api.
 	public String FENString() {
@@ -65,8 +55,7 @@ public class Game {
 		sb.append(" -");
 		sb.append(" " + movesPlayedWithoutCapture);
 		sb.append(" " + moveCount);
-		return sb.toString();
-		
+		return sb.toString();		
 	}
 
 	//Function to actually make the moves
@@ -78,10 +67,10 @@ public class Game {
 	//... or something alone those lines, havent gotten to it yet
 	public int makeMove(Move m) {
 		gameSaved = false;
-		
+		board.boardState[m.endPos.row][m.endPos.col] = board.boardState[m.startPos.row][m.startPos.col]; //Put the start pieces data in the end pieces spot.
+		board.boardState[m.startPos.row][m.startPos.col] = new Piece(PieceType.EMPTY,null);	
 
 	}
-	//TODO: add runtime arguments for a file to be grabbed via IO.java using serializable
 	public static void main(String[] args) {
 		Game game;
 		if(args.length == 1) { //if a runtime arg file was provided, try to open it and turn it into a game.
@@ -113,12 +102,22 @@ public class Game {
 					//TODO: write to file
 					//if user supplied another arg try to save to a file named what they passed, otherwise save over the file they loaded if there is one, and if there isnt one, fail to save and prompt for a file name.	
 				case "load":
-					if(gameSaved==false) {
-						//prompt user saying they have not saved their game, but if they add another parameter "force" this will be ignored.
-					}			
+					if(!st.hasNextToken()) {
+						System.out.println("Usage: load filename");
+						break;
+					}
+					String file = st.nextToken(); //Half of this stuff needs to be wrapped in try catches or checked
+					String force = st.nextToken();	
+					if(!gameSaved) {
+						if(force!=null || !force.equals("force")) {
+							
+						} else {
+							System.out.println("Game is not saved, type load -filename- force if you wish to ignore this
+						}
+					}	
 				case "voice": 
 					//TODO: wrap in voice control.
-					Move m;
+					Move m; //m would be gotten from some kind of function
 					if(validMove(m)) { 
 						makeMove(m); 
 					} else {

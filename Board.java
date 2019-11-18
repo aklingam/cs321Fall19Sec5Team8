@@ -1,6 +1,6 @@
 import java.util.*;
 public class Board {
-	Piece[][] boardState;; //Empty is also considered a piece, so we get to hold explicit references to all 64 places.
+	Piece[][] boardState; //Empty is also considered a piece, so we get to hold explicit references to all 64 places.
 	public Board() {
 		boardState = new Piece[8][8];
 		for(int i = 0; i<8; i++) { //I suppose i can skip the 4 rows where pieces are generated but whatever.
