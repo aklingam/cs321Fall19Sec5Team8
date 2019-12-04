@@ -21,18 +21,18 @@ public class ChessUI extends JFrame implements MouseListener, MouseMotionListene
     int yAdjustment;
 
     //File names
-    String wPawn   = "./images/wPawn.png";
-    String bPawn   = "./images/bPawn.png";
-    String wCastle = "./images/wCastle.png";
-    String bCastle = "./images/bCastle.png";
-    String wKnight = "./images/wKnight.png";
-    String bKnight = "./images/bKnight.png";
-    String wBishop = "./images/wBishop.png";
-    String bBishop = "./images/bBishop.png";
-    String wQueen  = "./images/wQueen.png";
-    String bQueen  = "./images/bQueen.png";
-    String wKing   = "./images/wKing.png";
-    String bKing   = "./images/bKing.png";
+    String wPawn   = "./wPawn.png";
+    String bPawn   = "./bPawn.png";
+    String wCastle = "./wCastle.png";
+    String bCastle = "./bCastle.png";
+    String wKnight = "./wKnight.png";
+    String bKnight = "./bKnight.png";
+    String wBishop = "./wBishop.png";
+    String bBishop = "./bBishop.png";
+    String wQueen  = "./wQueen.png";
+    String bQueen  = "./bQueen.png";
+    String wKing   = "./wKing.png";
+    String bKing   = "./bKing.png";
 
 
     
